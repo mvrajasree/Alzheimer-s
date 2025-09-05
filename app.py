@@ -36,7 +36,7 @@ model = tf.keras.models.load_model('alzheimer_classification_model.keras')
 # Define class names
 class_names = ['MildDemented', 'NonDemented', 'ModerateDemented', 'VeryMildDemented']
 
-st.title('Alzheimer\'s Disease Classification')
+
 st.write('Upload an MRI image to classify the stage of Alzheimer\'s disease.')
 
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
