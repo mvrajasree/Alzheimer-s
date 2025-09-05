@@ -3,6 +3,32 @@ import tensorflow as tf
 from PIL import Image
 import numpy as np
 import pandas as pd
+import spacy
+import subprocess
+
+# Function to download the SpaCy model if not already installed
+@st.cache_resource
+def download_spacy_model():
+    model_name = "en_core_web_sm"
+    try:
+        # Check if the model is already installed
+        spacy.load(model_name)
+        print(f"Model '{model_name}' already installed.")
+    except OSError:
+        print(f"Model '{model_name}' not found. Downloading...")
+        # Use subprocess to run the download command
+        subprocess.run(["python", "-m", "spacy", "download", model_name])
+        print(f"Model '{model_name}' downloaded successfully.")
+
+# Call the function at the start of your app
+download_spacy_model()
+
+# Now you can safely load the model
+nlp = spacy.load("en_core_web_sm")
+
+# --- Your app code starts here ---
+st.title("Alzheimer's Disease Prediction")
+# ... rest of your code
 
 # Load the saved Keras model
 model = tf.keras.models.load_model('alzheimer_classification_model.keras')
