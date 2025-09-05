@@ -2,6 +2,7 @@ import streamlit as st
 import tensorflow as tf
 from PIL import Image
 import numpy as np
+import pandas as pd
 
 # Load the saved Keras model
 model = tf.keras.models.load_model('alzheimer_classification_model.keras')
